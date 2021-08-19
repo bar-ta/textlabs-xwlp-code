@@ -51,7 +51,8 @@ def eval_by_rel_type(sel_relations, args, within_cross_eval=False):
 
         test_split = cross_validate[f"split_{split_idx}"]["test_list"]
         xwlp_test_sole = [doc_data for doc_data in doc_data_all if doc_data["doc_key"] in test_split]
-        sliding_window_dir = Path(f'{args.gold_path}/split_{split_idx}')
+        # sliding_window_dir = Path(f'{args.gold_path}/split_{split_idx}')
+        sliding_window_dir = Path(f'{args.gold_path}/dygiepp/split_{split_idx}')    # my change to the previous line
         test_file = sliding_window_dir / 'test.json'
 
         xwlp_test = []
@@ -194,7 +195,9 @@ def eval_by_rel_type(sel_relations, args, within_cross_eval=False):
 
         test_split = cross_validate[f"split_{split_idx}"]["test_list"]
         xwlp_test_sole = [doc_data for doc_data in doc_data_all if doc_data["doc_key"] in test_split]
-        sliding_window_dir = Path(f'{args.gold_path}/split_{split_idx}')
+        # sliding_window_dir = Path(f'{args.gold_path}/split_{split_idx}')
+        sliding_window_dir = Path(f'{args.gold_path}/dygiepp/split_{split_idx}')    # my change to the previous line
+
 
         test_file = sliding_window_dir / 'test.json'
 

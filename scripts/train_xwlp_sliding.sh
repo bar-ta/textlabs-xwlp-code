@@ -1,6 +1,6 @@
+set -e
 
-
-cuda_device="0,1,2,3"
+cuda_device="0,1"
 data_dir=$1
 output_dir=$2
 config_file="./training_config/xwlp_sliding.jsonnet"
