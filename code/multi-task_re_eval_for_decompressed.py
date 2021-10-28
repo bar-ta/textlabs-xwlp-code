@@ -14,9 +14,7 @@ from pathlib import Path
 
 from collections import defaultdict, Counter, OrderedDict
 
-# from utils.multi_task import *
-from utils.multi_task_orig import *
-
+from utils.multi_task import *
 
 def eval_by_rel_type(sel_relations, args, within_cross_eval=False):
 
