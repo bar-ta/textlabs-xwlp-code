@@ -60,8 +60,7 @@ def eval_by_rel_type(sel_relations, args, within_cross_eval=False):
                 xwlp_test.append(json.loads(line))
 
         assert [item['doc_key'] for item in xwlp_test] == [item['doc_key'] for item in xwlp_test_sole]
-
-        pred_file = f'{args.pred_path}/xwlp-split-{split_idx}/test_pred_decompressed.jsonl'
+        pred_file = f'{args.pred_path}/xwlp-split-{split_idx}/' + decompressed_pred_file_name
 
         xwlp_pred = []
         with open(pred_file) as f:
@@ -209,7 +208,7 @@ def eval_by_rel_type(sel_relations, args, within_cross_eval=False):
 
         assert [item['doc_key'] for item in xwlp_test] == [item['doc_key'] for item in xwlp_test_sole]
 
-        pred_file = f'{args.pred_path}/xwlp-split-{split_idx}/test_pred_decompressed.jsonl'
+        pred_file = f'{args.pred_path}/xwlp-split-{split_idx}/' + decompressed_pred_file_name
 
         xwlp_pred = []
         with open(pred_file) as f:
@@ -391,8 +390,16 @@ if __name__ == '__main__':
     parser.add_argument('--seq_len_limit', type=int, default=150)
     parser.add_argument('--dist_size', type=int, default=25)
     parser.add_argument("--eval_dev", action='store_true', help="Show dev set performance")
-
+    # parser.add_argument("--is_oracle", default=False, type=bool)
+    parser.add_argument("--oracle", dest='is_oracle', action='store_true')
+    parser.add_argument("--no-oracle", dest='is_oracle', action='store_false')
+    parser.set_defaults(is_oracle=False)
     args = parser.parse_args()
 
+    if args.is_oracle:
+        decompressed_pred_file_name = 'test_pred_decompressed_with_oracle.jsonl'
+    else:
+        decompressed_pred_file_name = 'test_pred_decompressed.jsonl'
+    print('DECOMPRESSED PRED FILE NAME: ' + decompressed_pred_file_name)
     main(args)
 
